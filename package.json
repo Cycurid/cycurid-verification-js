@@ -1,15 +1,15 @@
 {
-  "name": "cycurid-widget-js",
-  "version": "1.0.3",
-  "description": "Oauth",
+  "name": "cycurid-verification-js",
+  "version": "1.0.0",
+  "description": "user verification",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "cycurid-widget-js"
+    "cycurid-verification-js"
   ],
-  "author": "Francis Tan",
+  "author": "CycurID",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.0",

@@ -1,4 +1,4 @@
-module.exports = function checkParams(data, onSuccess, onFailure) {
+module.exports = function checkParams(data) {
   try {
     if (!data.client_api_key) {
       throw { statusText: "action is required" };

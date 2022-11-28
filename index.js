@@ -22,9 +22,12 @@ async function immeVerification(data) {
         ////Change this to production url
         // const url= response.data.url;
         console.log("responseStart", response);
-        const session = response.data.url.split("/").pop();
-        const testUrl = `${IMMEWIDGET_URL}/${session}`;
-        window.open(testUrl);
+        ///use for testing!!!!
+        // const session = response.data.url.split("/").pop();
+        // const testUrl = `${IMMEWIDGET_URL}/${session}`;
+        const session = response.data.url
+        //window.open(testUrl);
+        window.open(session);
       })
       .catch(function (error) {
         console.log("Error", error);

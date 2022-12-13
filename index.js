@@ -1,6 +1,6 @@
 const checkParams = require("./src/checkParams");
 const formatData = require("./src/formatData");
-const { OAUTH_SERVER, IMMEWIDGET_URL } = require("./src/constants");
+const { OAUTH_SERVER } = require("./src/constants");
 const axios = require("axios");
 
 async function immeVerification(data) {
@@ -19,14 +19,8 @@ async function immeVerification(data) {
         },
       })
       .then(function (response) {
-        ////Change this to production url
-        // const url= response.data.url;
         console.log("responseStart", response);
-        ///use for testing!!!!
-        // const session = response.data.url.split("/").pop();
-        // const testUrl = `${IMMEWIDGET_URL}/${session}`;
-        const session = response.data.url
-        //window.open(testUrl);
+        const session = response.data.url;
         window.open(session);
       })
       .catch(function (error) {

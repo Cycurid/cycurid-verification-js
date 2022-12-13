@@ -1,74 +1,118 @@
-# cycurid-widget-js
+# cycurid-verification-js
 
-cycurid-widget-js is CycurID's solution to authentication and onboarding through the power of a Reusable Digital Identity Token. Users register with CycurID to create a Reusable Encrypted Zero-Knowledge Identity Token that they present to your company's onboarding or authentication platform, letting them seamlessly and instantly connect.
+cycurid-verification-js is a CycurID's solution to authentication and onboarding through the power of a Reusable Digital Identity Token. Users register with CycurID to create a Reusable Encrypted Zero-Knowledge Identity Token that they present to your company's onboarding or authentication platform, letting them seamlessly and instantly connect.
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/) to install cycurid-widget-js.
+Use the package manager [npm](https://www.npmjs.com/) to install cycurid-verification-js.
 
 ```bash
-npm install cycurid-widget-js
+npm install cycurid-verification-js
 ```
 
 ## Usage
 
 ### Import
+
 IMPORT IN REACT:
+
 ```javascript
-import { immeOauth, immeLogout } from "cycurid-widget-js";
+import { immeVerification } from "cycurid-verification-js";
 ```
 
-### Supported methods
+### Supported method
 
-#### immeOauth
+#### immeVerification
+
 This is the main function to use for authentication. Invoking this function will do the whole login flow and generate an access token, refresh token and access token expiry date. The token is then used to fetch the specified scope after successful login and verification by the user.
+
 ```javascript
-import { immeOauth } from 'cycurid-widget-js';
+import { immeVerification } from "cycurid-verification-js";
 
-const config = {
-  client_id: '<YOUR_CLIENT_ID>',
-  client_secret: '<YOUR_CLIENT_SECRET>',
-  origin_url: '<YOUR_ORIGIN_URL>',
-  scopes: ['<YOUR_SCOPES_ARRAY>'],
-};
+  const myUserData = {
+    verification: {
+      callback: <YOUR_CALLBACK_URL>,
+      person: {
+        first_name: <USER_FIRSTNAME>,
+        last_name: <USER_LASTNAME>,
+      },
+      documents: {
+        type: <DOCUMENT_TYPE>,
+        number: <DOCUMENT_NUMBER>,
+        country: <DOCUMENT_COUNTRY>,
+      },
+      internal_reference: <YOUR_INTERNAL_REFERENCE>,
+    },
+  };
 
-const result = await immeOauth(config);
+  const verificationConfig = {
+    client_api_key: <YOUR_IMME_API_KEY>,
+    client_api_secret: <YOUR_IMME_API_SECRET>,
+    verifiable_data: myUserData,
+  };
+
+
+async function verify() {
+  immeVerification(verificationConfig);
+}
 ```
-#### immeLogout
-This function will revoke the OAuth token.
+
+### User data object
+
+- **client_api_key** - The key provided to you from [CycurID Portal Website](https://portal.cycurid.com/) see [Account Creation](#account-creation) for more details.
+- **client_api_secret** - The Secret provided to you from [CycurID Portal Website](https://portal.cycurid.com/) see [Account Creation](#account-creation) for more details.
+- **verifiable_data** - Your user data that will be compared to the Imme user's verified data.
+
+This is the User data object that you collect and send for verification using the the **client_api_key** and **client_api_secret**.
+
+==== About the **verification** object: ====
+
+- **_callback_**: <string_URL >is required
+- **_person_**: the <first_name_value> and <last_name_value> fields are required
+- **_documents_**: the documents data are NOT required. They consist of:
+  - **_type_**: "passport" or "driver_license"
+  - **_number_**: the document number
+  - **_country_**: the issued country in 3 string character lowecase. "can" for Canada, "fra" for France
+- **_internal_reference_**: the internal reference string is required
+
+E.g:
+
 ```javascript
-import { immeLogout } from 'cycurid-widget-js';
-
-const logout = await immeLogout(token, client_id, client_secret);
+    verification: {
+      callback: 'https://myCallback/verification',
+      person: {
+        first_name: "John",
+        last_name: "Smith",
+      },
+      documents: {
+        type: "driver_license",
+        number: "1234567",
+        country: "can",
+      },
+      internal_reference: "driver_appointment",
+    },
 ```
 
-### config
-This is your configuration object for the client. The config is passed into each of the methods with optional overrides.
-
-- **client_id** - The ID provided to you from [CycurID Portal Website](https://portal.cycurid.com/) see [Account Creation](#account-creation) for more details.
-- **client_secret** - The Secret provided to you from [CycurID Portal Website](https://portal.cycurid.com/) see [Account Creation](#account-creation) for more details.
-- **origin_url** - This is the URL that the request is initially used to initiate the OAuth process. This URL needs to match the provided URL associated with the client account. The widget response will be sent to this address.
--  **scopes** -  An array of what user information you want to be returned.
-```javascript
-[reference_uuid, email, phone, first_name, last_name, middle_name, dob, sex, nationality, address, address1, address2, city, state, zip, country, passport_number, passport_exp, passport_issuing, passport_issuing_country]
-```
 ### Demo Repository and Site
-[Imme Demo Website Github](https://github.com/Cycurid/demo-website-production)
 
-[Imme Live Demo Website](https://demo-website-production.vercel.app/)
+[Imme Demo Website Github](https://github.com/Cycurid/Demo-Website)
 
+[Imme Live Demo Website](https://imme-demo-website.vercel.app/)
 
 ## Account Creation
-*An Cycurid Account is required to use this package*
 
-To create an account, navigate to [CycurID Portal Website](https://portal.cycurid.com/) and click Create An Account to start verifying users' identity with CycurID. 
+_An Cycurid Account is required to use this package_
+
+To create an account, navigate to [CycurID Portal Website](https://portal.cycurid.com/) and click Create An Account to start verifying users' identity with CycurID.
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
+
 MIT License
 
 Copyright (c) 2022 CycurID

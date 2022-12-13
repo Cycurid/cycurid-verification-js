@@ -29,27 +29,27 @@ This is the main function to use for authentication. Invoking this function will
 ```javascript
 import { immeVerification } from "cycurid-verification-js";
 
-  const myUserData = {
-    verification: {
-      callback: <YOUR_CALLBACK_URL>,
-      person: {
-        first_name: <USER_FIRSTNAME>,
-        last_name: <USER_LASTNAME>,
-      },
-      documents: {
-        type: <DOCUMENT_TYPE>,
-        number: <DOCUMENT_NUMBER>,
-        country: <DOCUMENT_COUNTRY>,
-      },
-      internal_reference: <YOUR_INTERNAL_REFERENCE>,
+const myUserData = {
+  verification: {
+    callback: <YOUR_CALLBACK_URL>,
+    person: {
+      first_name: <USER_FIRSTNAME>,
+      last_name: <USER_LASTNAME>,
     },
-  };
+    documents: {
+      type: <DOCUMENT_TYPE>,
+      number: <DOCUMENT_NUMBER>,
+      country: <DOCUMENT_COUNTRY>,
+    },
+    internal_reference: <YOUR_INTERNAL_REFERENCE>,
+  },
+};
 
-  const verificationConfig = {
-    client_api_key: <YOUR_IMME_API_KEY>,
-    client_api_secret: <YOUR_IMME_API_SECRET>,
-    verifiable_data: myUserData,
-  };
+const verificationConfig = {
+  client_api_key: <YOUR_IMME_API_KEY>,
+  client_api_secret: <YOUR_IMME_API_SECRET>,
+  verifiable_data: myUserData,
+};
 
 
 async function verify() {
@@ -67,30 +67,30 @@ This is the User data object that you collect and send for verification using th
 
 ==== About the **verification** object: ====
 
-- **_callback_**: <string_URL >is required
+- **_callback_**: <string_URL> is required
 - **_person_**: the <first_name_value> and <last_name_value> fields are required
 - **_documents_**: the documents data are NOT required. They consist of:
   - **_type_**: "passport" or "driver_license"
-  - **_number_**: the document number
+  - **_number_**: the document number in a string format
   - **_country_**: the issued country in 3 string character lowecase. "can" for Canada, "fra" for France
 - **_internal_reference_**: the internal reference string is required
 
 E.g:
 
 ```javascript
-    verification: {
-      callback: 'https://myCallback/verification',
-      person: {
-        first_name: "John",
-        last_name: "Smith",
-      },
-      documents: {
-        type: "driver_license",
-        number: "1234567",
-        country: "can",
-      },
-      internal_reference: "driver_appointment",
-    },
+verification: {
+  callback: 'https://myCallback.com/verification',
+  person: {
+    first_name: "John",
+    last_name: "Smith",
+  },
+  documents: {
+    type: "driver_license",
+    number: "1234567",
+    country: "can",
+  },
+  internal_reference: "driver_appointment",
+},
 ```
 
 ### Demo Repository and Site

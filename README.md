@@ -26,17 +26,13 @@ This is the main function to use for authentication. Invoking this function will
 import { immeOauth } from 'cycurid-widget-js';
 
 const config = {
-  action: '<YOUR_ACTION>',
   client_id: '<YOUR_CLIENT_ID>',
   client_secret: '<YOUR_CLIENT_SECRET>',
   origin_url: '<YOUR_ORIGIN_URL>',
   scopes: ['<YOUR_SCOPES_ARRAY>'],
 };
 
-const onSuccess = (userInfo, token) => {<YOUR_ONSUCCESS_FUNCTION>}
-const onFailure = (token) => {<YOUR_ONFAILURE_FUNCTION>}
-
-const result = await immeOauth(config,onSuccess,onFailure);
+const result = await immeOauth(config);
 ```
 #### immeLogout
 This function will revoke the OAuth token.
@@ -49,7 +45,6 @@ const logout = await immeLogout(token, client_id, client_secret);
 ### config
 This is your configuration object for the client. The config is passed into each of the methods with optional overrides.
 
-- **action** - This specifies the objective that you want the user to accomplish currently, we support 'login' and 'register'. 
 - **client_id** - The ID provided to you from [CycurID Portal Website](https://portal.cycurid.com/) see [Account Creation](#account-creation) for more details.
 - **client_secret** - The Secret provided to you from [CycurID Portal Website](https://portal.cycurid.com/) see [Account Creation](#account-creation) for more details.
 - **origin_url** - This is the URL that the request is initially used to initiate the OAuth process. This URL needs to match the provided URL associated with the client account. The widget response will be sent to this address.
@@ -58,9 +53,9 @@ This is your configuration object for the client. The config is passed into each
 [reference_uuid, email, phone, first_name, last_name, middle_name, dob, sex, nationality, address, address1, address2, city, state, zip, country, passport_number, passport_exp, passport_issuing, passport_issuing_country]
 ```
 ### Demo Repository and Site
-[Imme Demo Website Github](https://github.com/Cycurid/Demo-Website)
+[Imme Demo Website Github](https://github.com/Cycurid/demo-website-production)
 
-[Imme Live Demo Website](https://imme-demo-website.vercel.app/)
+[Imme Live Demo Website](https://demo-website-production.vercel.app/)
 
 
 ## Account Creation

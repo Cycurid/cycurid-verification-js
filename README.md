@@ -65,7 +65,7 @@ async function verify() {
 
 This is the User data object that you collect and send for verification using the the **client_api_key** and **client_api_secret**.
 
-==== About the **verification** object: ====
+==== About the **verifiable_data** object: ====
 
 - **_callback_**: <string_URL> is required
 - **_person_**: the <first_name_value> and <last_name_value> fields are required
@@ -73,7 +73,7 @@ This is the User data object that you collect and send for verification using th
   - **_type_**: "passport" or "driver_license"
   - **_number_**: the document number in a string format
   - **_country_**: the issued country in 3 string character lowecase. "can" for Canada, "fra" for France
-- **_internal_reference_**: the internal reference string is required
+- **_internal_reference_**: an internal reference string is required
 
 E.g:
 
@@ -99,13 +99,13 @@ verification: {
 
 ### Demo Repository and Site
 
-[Imme Demo Website Github](https://github.com/Cycurid/Demo-Website)
+[Imme Demo Website Github](https://github.com/Cycurid/demo-website-production.git)
 
-[Imme Live Demo Website](https://imme-demo-website.vercel.app/)
+[Imme Live Demo Website](https://demo-website-production.vercel.app/)
 
 ## Account Creation
 
-_An Cycurid Account is required to use this package_
+_A Cycurid Account is required to use this package_
 
 To create an account, navigate to [CycurID Portal Website](https://portal.cycurid.com/) and click Create An Account to start verifying users' identity with CycurID.
 

@@ -63,7 +63,7 @@ async function verify() {
 - **client_api_secret** - The Secret provided to you from [CycurID Portal Website](https://portal.cycurid.com/) see [Account Creation](#account-creation) for more details.
 - **verifiable_data** - Your user data that will be compared to the Imme user's verified data.
 
-This is the User data object that you collect and send for verification using the the **client_api_key** and **client_api_secret**.
+This is the User data object that you collect and send for verification using your **client_api_key** and **client_api_secret**.
 
 ==== About the **verifiable_data** object: ====
 
@@ -92,9 +92,9 @@ verification: {
   internal_reference: "driver_appointment",
 },
 ```
-### Screenshot data returned
+### Data returned
 
-![verification-data-response](https://user-images.githubusercontent.com/107587283/207669875-2388028f-7b9a-49f4-943b-383682715e50.png)
+![verification-json-response](https://user-images.githubusercontent.com/107587283/207685960-193127ff-1d9a-4bd3-96c7-4c6075c7d52d.png)
 
 
 ### Demo Repository and Site

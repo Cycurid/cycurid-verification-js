@@ -65,6 +65,7 @@ async function verify() {
 
 This is the User data object that you collect and send for verification using your **client_api_key** and **client_api_secret**.
 
+
 ==== About the **verifiable_data** object: ====
 
 - **_callback_**: <string_URL> is required
@@ -95,6 +96,7 @@ verification: {
 
 ### HMAC Headers Signatures comparison
 
+The crypto.createHmac method is used to add an extra layer of security. Using it, to verify our signature and make sure the data you are receiving is coming from our servers.
 
 ### Data returned
 

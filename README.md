@@ -68,7 +68,7 @@ This is the User data object that you collect and send for verification using yo
 ==== About the **verifiable_data** object: ====
 
 - **_callback_**: <string_URL> is required
-- **_person_**: the <first_name_value> and <last_name_value> fields are required
+- **_person_**: the ***person*** object is required. At least one of its values <first_name_value> or <last_name_value> should be contained into it.
 - **_documents_**: the documents data are NOT required. They consist of:
   - **_type_**: "passport" or "driver_license"
   - **_number_**: the document number in a string format
@@ -92,6 +92,10 @@ verification: {
   internal_reference: "driver_appointment",
 },
 ```
+
+### HMAC Headers Signatures comparison
+
+
 ### Data returned
 
 ![verification-json-response](https://user-images.githubusercontent.com/107587283/207685960-193127ff-1d9a-4bd3-96c7-4c6075c7d52d.png)

@@ -92,6 +92,10 @@ verification: {
   internal_reference: "driver_appointment",
 },
 ```
+### Screenshot data returned
+
+![verification-data-response](https://user-images.githubusercontent.com/107587283/207669875-2388028f-7b9a-49f4-943b-383682715e50.png)
+
 
 ### Demo Repository and Site
 
